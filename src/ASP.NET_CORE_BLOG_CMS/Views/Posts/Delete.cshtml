@@ -1,0 +1,46 @@
+@model ASP.NET_CORE_BLOG_CMS.Models.Post
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dateTimeAdded)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dateTimeAdded)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.headerImageURL)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.headerImageURL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.textContent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.textContent)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

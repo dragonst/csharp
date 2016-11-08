@@ -1,0 +1,194 @@
+@model IEnumerable<ASP.NET_CORE_BLOG_CMS.Models.Post>
+@using System.Text.RegularExpressions;
+@using Microsoft.AspNetCore.Html;
+@using System.IO;
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-4 col-xs-12">
+        <h2>Index</h2>
+
+
+
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Projects <small>Listing design</small></h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Projects</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <p>Simple table with project listing with progress and editing options</p>
+
+                        <!-- start project list -->
+                        <table class="table table-striped projects">
+                            <thead>
+                                <tr>
+                                    <th> @Html.DisplayNameFor(model => model.headerImageURL)</th>
+                                    <th style="width: 20%">@Html.DisplayNameFor(model => model.Title)</th>                                                                      
+                                    <th>@Html.DisplayNameFor(model => model.textContent)</th>
+                                    <th>@Html.DisplayNameFor(model => model.dateTimeAdded)</th>
+                                    <th style="width: 20%">#Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="postsInfoTable">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="table_break_words">
+                                            <img class="setmaxwidth" src="@Html.DisplayFor(modelItem => item.headerImageURL)" />
+                                        </td>
+                                        <td class="table_break_words">
+                                            @Html.DisplayFor(modelItem => item.Title)
+                                        </td>
+                                        <td class="table_break_words textcontent">
+
+                                            @Html.DisplayFor(modelItem => item.textContent)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dateTimeAdded)
+                                        </td>
+                                       
+                                        
+                                        <td>
+                                            <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@item.ID"><i class="fa fa-folder"></i> Edit</a>
+                                            <a class="btn btn-info btn-xs" asp-action="Details" asp-route-id="@item.ID"><i class="fa fa-pencil"></i> View</a>
+                                            <a class="btn btn-danger btn-xs" deleteattr="/Posts/DeleteConfirmed/@item.ID"><i class="fa fa-trash-o"></i> Delete </a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                        <!-- end project list -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+        @section AddToHeadCSS{
+            <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Font Awesome -->
+            <link href="~/lib/gentelella/production/fonts/css/font-awesome.min.css" rel="stylesheet">
+            <!-- NProgress -->
+            <link href="~/lib/gentelella/production/css/nprogress.css" rel="stylesheet">
+            <!-- iCheck -->
+            <link href="~/lib/gentelella/production/css/icheck/flat/green.css" rel="stylesheet">
+            <!-- bootstrap-progressbar -->
+            <link href="~/lib/gentelella/production/css/progressbar/bootstrap-progressbar-3.3.0.css" rel="stylesheet">
+            <!-- Custom Theme Style -->
+            <link href="~/lib/gentelella/production/css/custom.css" rel="stylesheet">
+        }
+
+        @section AddToHeadJS{
+           
+            <script src="~/lib/gentelella/production/js/jquery.min.js"></script>
+            <script src="~/lib/gentelella/production/js/bootstrap.min.js"></script>
+            <script src="~/lib/gentelella/production/js/custom.js"></script>
+
+            <script src="~/lib/gentelella/production/js/nprogress.js"></script>
+            <!-- Chart.js -->
+            <!-- bootstrap-progressbar -->
+            <script src="~/lib/gentelella/production/js/progressbar/bootstrap-progressbar.min.js"></script>
+            <!-- iCheck -->
+            <script src="~/lib/gentelella/production/js/icheck/icheck.min.js"></script>
+            <!-- Skycons -->
+            <script src="~/lib/gentelella/production/js/skycons/skycons.min.js"></script>
+            <!-- Flot -->
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.pie.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.time.min.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.stack.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.resize.js"></script>
+            <!-- Flot plugins -->
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.orderBars.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/jquery.flot.spline.js"></script>
+            <script src="~/lib/gentelella/production/js/flot/curvedLines.js"></script>
+            <!-- DateJS -->
+            <script src="~/lib/gentelella/production/js/flot/date.js"></script>
+            <script src="~/lib/gentelella/production/js/datatables/jquery.dataTables.min.js"></script>
+
+            <script src="~/js/textContentStripHTML.js"></script>
+
+            <!-- JQVMap -->
+            <!-- <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+            <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+            <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>  -->
+            <!-- bootstrap-daterangepicker -->
+            <script src="~/lib/gentelella/production/js/moment/moment.min.js"></script>
+            <script src="~/lib/gentelella/production/js/datepicker/daterangepicker.js"></script>
+            <!-- Custom Theme Scripts -->
+            <script>
+                var elToDelete;
+                $("#postsInfoTable .btn-danger").on("click", function () {
+                    elToDelete = $(this).attr('deleteattr');
+                    var html = "<div id=\"popupdelete\"><div id=\"popupdelete_inner\"><h2>Are you sure?</h2><div class=\"clearfix\"></div><button class=\"btn btn-default yes\">Yes</button><button class=\"btn btn-default no\">No</button></div></div>"
+                    $("body").append(html);
+                   
+                });
+
+                $("body").on("click", ".no", function () {
+                    $("body").children("#popupdelete").remove();
+                });
+
+                $("body").on("click", ".yes", function () {
+                    $.ajax({
+                        method: "POST",
+                        url: elToDelete,
+                        success: function () {
+                            location.reload(true);
+                        }
+                    })
+                });
+              
+            </script>
+            
+           
+        }

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{28D3DBFE-7D32-4DA8-B8F0-DBC9809578BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B2E23CF-0554-47DA-9A6E-C32619DED82E}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ASP.NET_CORE_BLOG_CMS", "src\ASP.NET_CORE_BLOG_CMS\ASP.NET_CORE_BLOG_CMS.xproj", "{D7EE1E7F-3273-4B12-BD49-749E9476B0B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7EE1E7F-3273-4B12-BD49-749E9476B0B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7EE1E7F-3273-4B12-BD49-749E9476B0B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7EE1E7F-3273-4B12-BD49-749E9476B0B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7EE1E7F-3273-4B12-BD49-749E9476B0B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7EE1E7F-3273-4B12-BD49-749E9476B0B1} = {28D3DBFE-7D32-4DA8-B8F0-DBC9809578BF}
+	EndGlobalSection
+EndGlobal
