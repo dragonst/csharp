@@ -61,7 +61,6 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
         }
 
         // GET: Posts
-       
         public async Task<IActionResult> Index()
         {
             /*var blogs = _context.Post 
