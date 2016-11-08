@@ -1,5 +1,5 @@
---temp-output:c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\obj\Debug\netcoreapp1.0\
---out:c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\bin\Debug\netcoreapp1.0\ASP.NET_CORE_BLOG_CMS.dll
+--temp-output:C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\obj\Debug\netcoreapp1.0\
+--out:C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\bin\Debug\netcoreapp1.0\ASP.NET_CORE_BLOG_CMS.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -229,37 +229,37 @@
 --reference:C:\Users\lilbl\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\lilbl\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\lilbl\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\obj\Debug\netcoreapp1.0\ASP.NET_CORE_BLOG_CMSdotnet-compile.deps.json",ASP.NET_CORE_BLOG_CMS.deps.json
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Program.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Startup.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\AccountController.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\HomeController.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\ManageController.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\PostsController.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\ApplicationDbContext.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\00000000000000_CreateIdentitySchema.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\20161107123130_MyFirstMigration.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\20161107123130_MyFirstMigration.Designer.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\ApplicationDbContextModelSnapshot.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ApplicationUser.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\Post.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ForgotPasswordViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\LoginViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\RegisterViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ResetPasswordViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\SendCodeViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\VerifyCodeViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\AddPhoneNumberViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ChangePasswordViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\FactorViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\IndexViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ManageLoginsViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\RemoveLoginViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\SetPasswordViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\IEmailSender.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\ISmsSender.cs
-c:\users\lilbl\documents\visual studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\MessageServices.cs
+--resource:"C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\obj\Debug\netcoreapp1.0\ASP.NET_CORE_BLOG_CMSdotnet-compile.deps.json",ASP.NET_CORE_BLOG_CMS.deps.json
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Program.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Startup.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\AccountController.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\HomeController.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\ManageController.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Controllers\PostsController.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\ApplicationDbContext.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\00000000000000_CreateIdentitySchema.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\20161107123130_MyFirstMigration.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\20161107123130_MyFirstMigration.Designer.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Data\Migrations\ApplicationDbContextModelSnapshot.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ApplicationUser.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\Post.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ForgotPasswordViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\LoginViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\RegisterViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\ResetPasswordViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\SendCodeViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\AccountViewModels\VerifyCodeViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\AddPhoneNumberViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ChangePasswordViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\FactorViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\IndexViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\ManageLoginsViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\RemoveLoginViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\SetPasswordViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\IEmailSender.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\ISmsSender.cs
+C:\Users\lilbl\Documents\Visual Studio 2015\Projects\ASP.NET_CORE_BLOG_CMS\src\ASP.NET_CORE_BLOG_CMS\Services\MessageServices.cs
