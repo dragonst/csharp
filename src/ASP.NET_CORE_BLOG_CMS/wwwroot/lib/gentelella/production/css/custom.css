@@ -818,7 +818,7 @@ h2 {
   width: 100%;
   display: block;
 }
-.accordion .panel:hover {
+.accordion .panel {
   background: #F2F5F7;
 }
 .x_panel {
@@ -5349,7 +5349,7 @@ ul.nav.child_menu {
 display: none;
 }
 
-#textContent, #headerImageThumbnailData, #headerImageURL {
+input#Post_textContent, input#Post_headerImageThumbnailData, input#Post_headerImageURL {
     display:none;
 }
 
@@ -5399,4 +5399,21 @@ white-space: normal;
 
 .setmaxwidth {
 max-width:126px;
+}
+
+.validation-summary-errors ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.margin-top-20px {
+    margin-top: 20px;
+}
+
+.float-right {
+    float: right;
+}
+
+.margin-bottom-5px {
+    margin-bottom: 5px;
 }

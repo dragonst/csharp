@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASP.NET_CORE_BLOG_CMS.Models
 {
     public class Post
     {
         public int ID { get; set; }
+        [StringLength(60, MinimumLength = 3)]
         public string Title { get; set; }
         [Display(Name = "Header Image")]
         public string headerImageURL { get; set; }
@@ -19,5 +21,8 @@ namespace ASP.NET_CORE_BLOG_CMS.Models
         public string textContent { get; set; }
         [Display(Name = "Last Modified")]
         public DateTime dateTimeAdded { get; set; } = DateTime.Now;
+        public string cssFileUrl { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }

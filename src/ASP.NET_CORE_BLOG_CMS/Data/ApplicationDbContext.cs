@@ -22,6 +22,9 @@ namespace ASP.NET_CORE_BLOG_CMS.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-        public DbSet<Post> Post { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        
+       
     }
 }

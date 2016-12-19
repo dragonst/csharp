@@ -5,12 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ASP.NET_CORE_BLOG_CMS.Data;
 
-namespace ASP.NET_CORE_BLOG_CMS.Data.Migrations
+namespace ASP.NET_CORE_BLOG_CMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161129154810_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -65,16 +66,35 @@ namespace ASP.NET_CORE_BLOG_CMS.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("ASP.NET_CORE_BLOG_CMS.Models.Category", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("numberOfPosts");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("ASP.NET_CORE_BLOG_CMS.Models.Post", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Title");
+                    b.Property<int?>("CategoryID");
+
+                    b.Property<string>("Title")
+                        .HasAnnotation("MaxLength", 60);
+
+                    b.Property<string>("cssFileUrl");
 
                     b.Property<DateTime>("dateTimeAdded");
 
-                    b.Property<string>("headerImageThumbnailData");
+                    b.Property<string>("headerImageThumbnailUrl");
 
                     b.Property<string>("headerImageURL");
 
@@ -82,7 +102,9 @@ namespace ASP.NET_CORE_BLOG_CMS.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Post");
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -190,6 +212,13 @@ namespace ASP.NET_CORE_BLOG_CMS.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("ASP.NET_CORE_BLOG_CMS.Models.Post", b =>
+                {
+                    b.HasOne("ASP.NET_CORE_BLOG_CMS.Models.Category", "Category")
+                        .WithMany("Post")
+                        .HasForeignKey("CategoryID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

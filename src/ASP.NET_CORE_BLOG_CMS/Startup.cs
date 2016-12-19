@@ -19,6 +19,8 @@ namespace ASP.NET_CORE_BLOG_CMS
     {
         public Startup(IHostingEnvironment env)
         {
+           
+            
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -47,12 +49,15 @@ namespace ASP.NET_CORE_BLOG_CMS
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+          
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+
+           
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

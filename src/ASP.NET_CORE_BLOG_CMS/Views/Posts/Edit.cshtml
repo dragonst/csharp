@@ -1,4 +1,4 @@
-@model ASP.NET_CORE_BLOG_CMS.Models.Post
+@model ASP.NET_CORE_BLOG_CMS.Models.PostCategoryviewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,24 +11,50 @@
                 <h4>Post</h4>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="ID" />
+                <input type="hidden" asp-for="Post.ID" />
                 <div class="form-group">                   
                     <h2>Title</h2>                    
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger" />
+                    <input asp-for="Post.Title" class="form-control" />
+                    <span asp-validation-for="Post.Title" class="text-danger" />
                 </div>
+                <div class="form-group">
+
+                    <div class="col-md-4 no-padding">
+                        <h2>Category</h2>
+                        <select class="form-control category-select" asp-for="Category.Name" asp-items="@Model.CategoryList"></select>
+
+                        <div class="x_content no-padding">
+
+                            <!-- start accordion -->
+                            <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                                <div class="panel">
+                                    <a class="panel-heading collapsed" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="panel-title">New category <i class="fa fa-arrow-circle-o-down" style="float:right;font-size:23px;"></i></h4>
+                                    </a>
+                                    <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+                                        <div class="panel-body">
+                                            <input class="form-control" id="newCategory" style="width: auto;display:inline-block;" />
+                                            <button type="button" class="btn btn-success" id="addCategory" style="margin-left:5px">Create</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end of accordion -->
+                        </div>
+                    </div>
+                </div>  
                 <div class="form-group">                   
-                    <input asp-for="headerImageURL" class="form-control" />
-                    <span asp-validation-for="headerImageURL" class="text-danger" />
+                    <input asp-for="Post.headerImageURL" class="form-control" />
+                    <span asp-validation-for="Post.headerImageURL" class="text-danger" />
                 </div>
                 <div class="form-group">                                       
-                        <input asp-for="headerImageThumbnailData" class="form-control" />
-                        <span asp-validation-for="headerImageThumbnailData" class="text-danger" />                    
+                        <input asp-for="Post.headerImageThumbnailData" class="form-control" />
+                        <span asp-validation-for="Post.headerImageThumbnailData" class="text-danger" />                    
                 </div>
                 <div class="form-group">
                                       
-                        <input asp-for="textContent" class="form-control" />
-                        <span asp-validation-for="textContent" class="text-danger" />                    
+                        <input asp-for="Post.textContent" class="form-control" />
+                        <span asp-validation-for="Post.textContent" class="text-danger" />                    
                 </div>
                 <div class="x_panel">
                     <div class="x_title">
@@ -112,9 +138,21 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="mydrzone" id="files">
-                    <div class="dz-message needsclick">
-                        Drop files here or click to upload.<br>                        
+                    @if (Model.Post.headerImageThumbnailData == null)
+                    { <div class="dz-message needsclick">
+                        Drop files here or click to upload.<br>
                     </div>
+                    }
+                    else{
+                    <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+                        <div class="dz-image">
+                            <img alt="" src="@Model.Post.headerImageThumbnailData">
+                        </div>
+                    </div>
+                     }
+                   
+                   
+                    
                 </div>
                 <div>
                     <div class="form-group">
@@ -155,10 +193,15 @@
         <link rel="stylesheet" href="~/lib/gentelella/production/css/switchery/switchery.min.css" />
         <link rel="stylesheet" href="~/lib/gentelella/production/css/dropzone.css" />
 
+@if (Model.Post.cssFileUrl != null)
+{
+  
+    <link rel="stylesheet" href="~/css/autogenerated/@Model.Post.cssFileUrl" />
+}
        
     }
 
-    @section AddToHeadJS
+    @section AddJS
 {
         <script src="~/lib/gentelella/production/js/jquery.min.js"></script>
         <script src="~/lib/gentelella/production/js/bootstrap.min.js"></script>
@@ -211,7 +254,8 @@
         </script>
         <script src="~/lib/gentelella/production/js/custom.js"></script>
         <script src="~/lib/gentelella/production/js/dropzone/dropzone.js"></script>
-
+        <script src="~/js/custom_functions.js"></script>
+       
         <!-- select2 -->
         
         <!-- /form validation -->
@@ -221,6 +265,8 @@
                 $('.xcxc').click(function() {
                     $('#descr').val($('#editor').html());
                 });
+                addNewCategory();
+                generateCssFile($("#editor"));
             });
 
             $(function() {
@@ -282,10 +328,10 @@
 
             //THE OLD textcontent machanism
 
-            var myContent = $("#textContent").val();
+            var myContent = $("#Post_textContent").val();
             $("#editor").html(myContent);
             $(".form-horizontal .btn").on('click', function () {
-                $("#textContent").val($("#editor").html());
+                $("#Post_textContent").val($("#editor").html());
             });
 
         </script>
@@ -296,15 +342,15 @@
             init: function() {
                 this.on("success", function (file) {
                     var headerimgpath = file.xhr.response;
-                    $("#headerImageURL").val(JSON.parse(headerimgpath));
-                    $("#headerImageThumbnailData").val($(".dz-image img").attr("src"));
+                    $("#Post_headerImageURL").val(JSON.parse(headerimgpath));
+                    $("#Post_headerImageThumbnailData").val($(".dz-image img").attr("src"));
 
                 });
             }
         });
     if ($("#headerImageThumbnailData").val()) {
         var headerImageThumbnailData = $("#headerImageThumbnailData").val();
-        console.log(headerImageThumbnailData);
+      
         $(".mydrzone").html('<div class=\"dz-preview dz-processing dz-image-preview dz-success dz-complete\"><div class=\"dz-image\"><img data-dz-thumbnail src=\"' + headerImageThumbnailData + '\"></div></div>');
     }
     

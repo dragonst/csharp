@@ -1,46 +1,78 @@
-@model ASP.NET_CORE_BLOG_CMS.Models.Post
+@model ASP.NET_CORE_BLOG_CMS.Models.PostCategoryviewModel
 
 @{
     ViewData["Title"] = "Create";
-}
 
-<h2>@Context.Request.Path</h2>
+   
 
-
-
+<h2>Create New Post</h2>
+   }
 
 
   <div class="x_panel">
-    <form asp-action="Create">
+    <form asp-action="Create" id="theform">
         <div class="form-horizontal">
-            <h4>Post</h4>
-            <hr />
+            <div class="x_title">
+                <h2>Post</h2>
+
+                <div class="clearfix"></div>
+            </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+           
             <div class="form-group">
                 <h2>Title</h2> 
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger" />
-
-            </div>
-
+                <input asp-for="Post.Title" class="form-control" />
+                <span asp-validation-for="Post.Title" class="text-danger" />
+            </div> 
             <div class="form-group">
                
-                <input asp-for="headerImageURL" class="form-control imgurl" />
-                <span asp-validation-for="headerImageURL" class="text-danger" />
+                <div class="col-md-4 no-padding">
+                    <h2>Category</h2> 
+                    <select class="form-control category-select" asp-for="Category.Name" asp-items="@Model.CategoryList"></select>
+
+                    <div class="x_content no-padding">
+
+                        <!-- start accordion -->
+                        <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                            <div class="panel">
+                                <a class="panel-heading collapsed" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
+                                    <h4 class="panel-title">New category <i class="fa fa-arrow-circle-o-down" style="float:right;font-size:23px;"></i></h4>
+                                   
+                                </a>
+                                <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+                                        <input class="form-control" id="newCategory" style="width: auto;display:inline-block;"/>
+                                        <button type="button" class="btn btn-success" id="addCategory" style="margin-left:5px">Create</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end of accordion -->
+
+
+                    </div>
+                </div>
+
+            </div>                  
+            <div class="form-group hidden">
+               
+                <input asp-for="Post.headerImageURL" class="form-control imgurl" />
+               
             </div>
             
-            <div class="form-group">
+            <div class="form-group hidden">
                 
-                <input asp-for="headerImageThumbnailData" class="form-control imgurl" />
-                <span asp-validation-for="headerImageThumbnailData" class="text-danger" />
+                <input asp-for="Post.headerImageThumbnailData" class="form-control imgurl" />
+              
             </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input asp-for="textContent" class="form-control" />
-                    <span asp-validation-for="textContent" class="text-danger" />
-                </div>
-            </div>           
+            <div class="form-group hidden">                
+                    <input asp-for="Post.textContent" class="form-control" />                               
+            </div>  
+            <div class="form-group hidden">
+                <input asp-for="Post.cssFileUrl" class="form-control" />               
+            </div>            
             <div class="x_panel" style="margin-top:20px;">
                 <div class="x_title">
                     <h2>Text Content</h2>
@@ -137,6 +169,7 @@
             </div>
         </div>
     </form>
+     
 </div>
           
 
@@ -166,11 +199,11 @@
 
 }
 
-@section AddToHeadJS
+@section AddJS
 {
 <script src="~/lib/gentelella/production/js/jquery.min.js"></script>
 <script src="~/lib/gentelella/production/js/bootstrap.min.js"></script>
-
+<script src="http://malsup.github.com/jquery.form.js"></script> 
 <!-- bootstrap progress js -->
 <script src="~/lib/gentelella/production/js/progressbar/bootstrap-progressbar.min.js"></script>
 
@@ -218,6 +251,7 @@
     });
 </script>
 <script src="~/lib/gentelella/production/js/custom.js"></script>
+<script src="~/js/custom_functions.js"></script>
 <script src="~/lib/gentelella/production/js/dropzone/dropzone.js"></script>
 
 
@@ -229,6 +263,10 @@
       $('.xcxc').click(function() {
         $('#descr').val($('#editor').html());
       });
+
+      addNewCategory();
+      generateCssFile($("#editor"));
+     
     });
 
     $(function() {
@@ -290,9 +328,8 @@
 
     //THE OLD textcontent machanism
 
-    $(".form-horizontal .btn").on('click', function () {
-        $("#textContent").val($("#editor").html());
-    });
+
+
    
 </script>
 

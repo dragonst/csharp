@@ -3,40 +3,88 @@
     ViewData["Title"] = "Register";
 }
 
-<h2>@ViewData["Title"].</h2>
 
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <h4>Create a new account.</h4>
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
 
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+<div class="">
+   
+    <div class="clearfix"></div>
+
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12" style="height: 600px;">
+            <div class="col-md-push-3 col-md-6 col-xs-12">                             
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Registration Form <small>Click to validate</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <!-- start form for validation -->
+                        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                           
+                                <label asp-for="Email"></label>
+                            <span asp-validation-for="Email" class="parsley-errors-list text-danger"></span><input asp-for="Email" class="form-control margin-bottom-5px" type="text" />
+      
+                                                     
+                            <label asp-for="Password"></label>
+                            <span asp-validation-for="Password" class="parsley-errors-list text-danger"></span><input asp-for="Password" class="form-control margin-bottom-5px" type="password" />
+
+                            <label asp-for="ConfirmPassword"></label>
+                            <span asp-validation-for="ConfirmPassword" class="parsley-errors-list text-danger"></span><input asp-for="ConfirmPassword" class="form-control margin-bottom-5px" type="password" />
+                            <button type="submit" class="btn btn-default margin-top-20px float-right">Register</button>
+                        </form>
+                            <!-- end form for validations -->
+
+</div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+           
+            @section Scripts {
+                @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+            }
+
+
+@section AddToHeadCSS{
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="~/lib/gentelella/production/fonts/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- iCheck -->
+<link href="~/lib/gentelella/production/css/icheck/flat/green.css" rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="~/lib/gentelella/production/css/custom.css" rel="stylesheet">
+}
+
+@section AddJS{
+<script src="~/lib/gentelella/production/js/jquery.min.js"></script>
+<script src="~/lib/gentelella/production/js/bootstrap.min.js"></script>
+<script src="~/lib/gentelella/production/js/custom.js"></script>
+
 }

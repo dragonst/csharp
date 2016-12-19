@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using ASP.NET_CORE_BLOG_CMS.Models;
 using ASP.NET_CORE_BLOG_CMS.Models.AccountViewModels;
 using ASP.NET_CORE_BLOG_CMS.Services;
+using ASP.NET_CORE_BLOG_CMS.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ASP.NET_CORE_BLOG_CMS.Controllers
 {
@@ -22,19 +24,27 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly ApplicationDbContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            ApplicationDbContext context,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = context;
+            _roleManager = roleManager;
         }
 
         //
@@ -43,8 +53,14 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+
+
+            if (!_context.Users.Any())
+            {
+                return RedirectToAction("AdminRegister");
+            }
             return View();
+
         }
 
         //
@@ -62,6 +78,7 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -80,7 +97,6 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
                     return View(model);
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -88,7 +104,7 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -98,16 +114,16 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -117,7 +133,23 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    var regularUserRole = await _roleManager.FindByNameAsync("Regular User");
+                    if (regularUserRole == null)
+                    {
+                        regularUserRole = new IdentityRole("Regular User");
+                        await _roleManager.CreateAsync(regularUserRole);
+
+                        await _roleManager.AddClaimAsync(regularUserRole, new Claim("Regular User", "Regular User"));
+                    }
+                    if (!await _userManager.IsInRoleAsync(user, regularUserRole.Name))
+                    {
+                        await _userManager.AddToRoleAsync(user, regularUserRole.Name);
+                    }
+
+
+
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -127,6 +159,68 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+
+        // GET: /Account/AdminRegister
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AdminRegister()
+        {
+            return View();
+        }
+            
+        
+
+        //
+        // POST: /Account/AdminRegister
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminRegister(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                    // Send an email with this link
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                    var adminRole = await _roleManager.FindByNameAsync("Administrator");
+                    if (adminRole == null)
+                    {
+                        adminRole = new IdentityRole("Administrator");
+                        await _roleManager.CreateAsync(adminRole);
+                        await _roleManager.AddClaimAsync(adminRole, new Claim("Administrator", "Administrator"));
+                    }
+                    if (!await _userManager.IsInRoleAsync(user, adminRole.Name))
+                    {
+                        await _userManager.AddToRoleAsync(user, adminRole.Name);
+                    }
+
+
+
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation(3, "User created a new account with password.");
+                    return RedirectToLocal(returnUrl);
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);                              
+        }
+
+
 
         //
         // POST: /Account/LogOff
@@ -191,6 +285,7 @@ namespace ASP.NET_CORE_BLOG_CMS.Controllers
                 ViewData["LoginProvider"] = info.LoginProvider;
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
+                
             }
         }
 

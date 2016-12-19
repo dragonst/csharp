@@ -1,4 +1,4 @@
-@model IEnumerable<ASP.NET_CORE_BLOG_CMS.Models.Post>
+@model PaginatedList<ASP.NET_CORE_BLOG_CMS.Models.Post>
 @using System.Text.RegularExpressions;
 @using Microsoft.AspNetCore.Html;
 @using System.IO;
@@ -60,17 +60,15 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
-                        <p>Simple table with project listing with progress and editing options</p>
-
+                       
                         <!-- start project list -->
                         <table class="table table-striped projects">
                             <thead>
                                 <tr>
-                                    <th> @Html.DisplayNameFor(model => model.headerImageURL)</th>
-                                    <th style="width: 20%">@Html.DisplayNameFor(model => model.Title)</th>                                                                      
-                                    <th>@Html.DisplayNameFor(model => model.textContent)</th>
-                                    <th>@Html.DisplayNameFor(model => model.dateTimeAdded)</th>
+                                    <th>Image</th>
+                                    <th style="width: 20%">Title</th>
+                                    <th>Text Content</th>
+                                    <th>Added</th>
                                     <th style="width: 20%">#Edit</th>
                                 </tr>
                             </thead>
@@ -84,9 +82,8 @@
                                         <td class="table_break_words">
                                             @Html.DisplayFor(modelItem => item.Title)
                                         </td>
-                                        <td class="table_break_words textcontent">
-
-                                            @Html.DisplayFor(modelItem => item.textContent)
+                                        <td class="table_break_words textcontent">                                            
+                                                @Html.DisplayFor(modelItem => item.textContent)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.dateTimeAdded)
@@ -95,14 +92,32 @@
                                         
                                         <td>
                                             <a class="btn btn-primary btn-xs" asp-action="Edit" asp-route-id="@item.ID"><i class="fa fa-folder"></i> Edit</a>
-                                            <a class="btn btn-info btn-xs" asp-action="Details" asp-route-id="@item.ID"><i class="fa fa-pencil"></i> View</a>
+                                            <a class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> View</a>
                                             <a class="btn btn-danger btn-xs" deleteattr="/Posts/DeleteConfirmed/@item.ID"><i class="fa fa-trash-o"></i> Delete </a>
                                         </td>
                                     </tr>
-
-                                }
+                                }                               
                             </tbody>
                         </table>
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewData["CurrentSort"]"
+                           asp-route-page="@(Model.PageIndex - 1)"
+                           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                           class="btn btn-default @prevDisabled btn">
+                            Previous
+                        </a>
+                        <a asp-action="Index"
+                           asp-route-sortOrder="@ViewData["CurrentSort"]"
+                           asp-route-page="@(Model.PageIndex + 1)"
+                           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                           class="btn btn-default @nextDisabled btn">
+                            Next
+                        </a>
                         <!-- end project list -->
 
                     </div>
@@ -127,7 +142,7 @@
             <link href="~/lib/gentelella/production/css/custom.css" rel="stylesheet">
         }
 
-        @section AddToHeadJS{
+        @section AddJS{
            
             <script src="~/lib/gentelella/production/js/jquery.min.js"></script>
             <script src="~/lib/gentelella/production/js/bootstrap.min.js"></script>
@@ -155,7 +170,7 @@
             <script src="~/lib/gentelella/production/js/flot/date.js"></script>
             <script src="~/lib/gentelella/production/js/datatables/jquery.dataTables.min.js"></script>
 
-            <script src="~/js/textContentStripHTML.js"></script>
+         
 
             <!-- JQVMap -->
             <!-- <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
@@ -164,6 +179,7 @@
             <!-- bootstrap-daterangepicker -->
             <script src="~/lib/gentelella/production/js/moment/moment.min.js"></script>
             <script src="~/lib/gentelella/production/js/datepicker/daterangepicker.js"></script>
+            <script src="~/js/custom_functions.js"></script>
             <!-- Custom Theme Scripts -->
             <script>
                 var elToDelete;
@@ -187,7 +203,7 @@
                         }
                     })
                 });
-              
+                textContentStripHTML();
             </script>
             
            
